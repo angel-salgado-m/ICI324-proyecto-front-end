@@ -5,43 +5,11 @@ export const siteConfig = {
 	description: "",
 	navItems: [
     {
-      label: "Login",
-      href: "/login",
-    },
-	{
-		label: "home-admin",
-		href: "/home-admin",
-	  },
-	  {
-		label: "Clientes",
-		href: "/clientes",
-	  },
-	  {
-		label: "trabajadores",
-		href: "/trabajadores",
-	  },
-    {
       label: "About",
       href: "/about",
     }
 	],
-	navMenuItems: [
-		{
-			label: "Login",
-			href: "/login",
-		  },
-		  {
-			label: "home-admin",
-			href: "/home-admin",
-		  },
-		  {
-			label: "Clientes",
-			href: "/clientes",
-		  },
-		  {
-			label: "trabajadores",
-			href: "/trabajadores",
-		  },
+	navMenuItems: [,
 		{
 			label: "Logout",
 			href: "/logout",

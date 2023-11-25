@@ -1,32 +1,39 @@
 "use client";
-import {Image} from "@nextui-org/image";
+import { useState } from 'react';
 import {Button, ButtonGroup} from "@nextui-org/react";
+import stayles from "../styles/styleop.module.css";
+import Loginbox from "../components/loginbox";
+import {motion} from "framer-motion"
 export default function Home() {
+	const [showLogin, setShowLogin] = useState(false);
+
+	const handleButtonClick = () => {
+		setShowLogin(true);
+	};
+
+	const handleOutsideClick = () => {
+		setShowLogin(false);
+	};
 	return (
-		<div className="mt-8">
-			<div><Image
-				isBlurred
-				isZoomed
-				alt="NextUI Fruit Image with Zoom"
-				src="https://www.gasvalpo.cl/PublicTempStorage/multimedia/bn170a3_7209972b9805429387565edb53dea1e8.png"
-				/>
-			</div>
-			<div className="flex items-center">
-				<Image
-					isBlurred
-					isZoomed
-					width={620}
-					alt="NextUI Fruit Image with Zoom"
-					src="https://www.gasvalpo.cl/PublicTempStorage/multimedia/bn170a3_7209972b9805429387565edb53dea1e8.png"
-					/>
-				<Image
-					isBlurred
-					isZoomed
-					width={620}
-					alt="NextUI Fruit Image with Zoom"
-					src="https://www.gasvalpo.cl/PublicTempStorage/multimedia/bn170a3_7209972b9805429387565edb53dea1e8.png"
-					/>
-			</div>
+		<div className={stayles.bloque} onClick={handleOutsideClick}>
+			{!showLogin && (
+				<motion.div
+					initial={{ scale: 0 }}
+					animate={{ rotate: 360, scale: 0.9 }}
+					whileHover={{ scale: 1 }}
+					whileTap={{ scale: 0.9 }}
+					exit={{ scale: 0 }}
+					transition={{
+						type: "spring",
+						stiffness: 160,
+						damping: 20
+					}} className={stayles.motionboton}>
+				<Button className={stayles.botonHome} onClick={handleButtonClick}>
+				Ingresar
+				</Button>
+				</motion.div>
+			)}
+			{showLogin && <Loginbox/>}
 		</div>
 	);
 }
