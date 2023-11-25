@@ -23,7 +23,11 @@ export default function Loginbox() {
   const userType = searchParams.get('userType')
   const backendUrl = 'http://localhost:3200';//cambiar al .env en un futuro
   const funcionlogin = async () => {
-    router.push('/lector');//redirecciona a la pagina de inicio de cada usuario por el momento*****
+    
+    router.push('/forum');//redirecciona a la pagina de inicio de cada usuario por el momento*****
+    
+    
+    
     if (!isValid || !rut.raw || !password) {
       alert('Rut o contraseña inválidos');
       return;

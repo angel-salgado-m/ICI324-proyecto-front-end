@@ -1,8 +1,9 @@
 import { title } from "@/components/primitives";
+import Lectura from "../../components/forums/lectura";
 export default function ForumPage() {
 	return (
 		<div>
-			<h1 className={title()}>Componente elegido</h1>
+			<Lectura/>
 		</div>
 	);
 }
