@@ -22,7 +22,7 @@ export const Navbar = () => {
 				<NavbarBrand as="li" className={styles.navicon}>
 					<NextLink className="flex justify-start items-center gap-1" href="/">
 						<Logo />
-						<p className="font-bold text-inherit">P-INF</p>
+						<p className="font-bold text-inherit">Innovo</p>
 					</NextLink>
 				</NavbarBrand>
 				<ul className={styles.navtext}>
