@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Select, SelectItem, Image,Input } from '@nextui-org/react';
 import styles from "../../styles/styleop.module.css";
 
-const ComponenteFormulario = () => {
+export default function Lectura(){
   const [direcciones] = useState([
     { id: 1, nombre: 'san jose' },
     { id: 2, nombre: 'asdassssd sdsdsd 2' },
@@ -62,12 +62,6 @@ const ComponenteFormulario = () => {
           ))}
         </Select>
       </label>
-
-      <label>
-        Descripción:
-        <textarea value={descripcion} onChange={handleDescripcionChange}></textarea>
-      </label>
-
       <label>
         Imagen:
         <input type="file" accept="image/*" onChange={handleImagenChange} />
@@ -85,5 +79,3 @@ const ComponenteFormulario = () => {
     </form>
   );
 };
-
-export default ComponenteFormulario;

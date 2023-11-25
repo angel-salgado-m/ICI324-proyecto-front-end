@@ -18,16 +18,10 @@ export default function Loginbox() {
   const handleClickInside = (e) => {
     e.stopPropagation();
   };
-  // seteo de userType
-  const searchParams = useSearchParams()
-  const userType = searchParams.get('userType')
   const backendUrl = 'http://localhost:3200';//cambiar al .env en un futuro
   const funcionlogin = async () => {
     
-    router.push('/forum');//redirecciona a la pagina de inicio de cada usuario por el momento*****
-    
-    
-    
+    router.push('/lector');//redirecciona a la pagina de inicio de cada usuario por el momento*****
     if (!isValid || !rut.raw || !password) {
       alert('Rut o contraseña inválidos');
       return;
@@ -36,7 +30,6 @@ export default function Loginbox() {
     const userData = {
       rut: rut.raw, // rut.raw=(20111111-5);rut.formatted=(20.111.111-5)
       password: password,
-      usertype: userType
     };
     // Realiza la solicitud a la API
 
@@ -50,6 +43,11 @@ export default function Loginbox() {
         body: JSON.stringify(userData),
       });
       if (response.ok) {
+        // Si la respuesta es correcta, guarda el token en el localStorage
+        const { token, cargo } = response.data; // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
+        localStorage.setItem('token', token);
+        localStorage.setItem('cargo', cargo);
+        userType=cargo.toLowerCase();
         router.push(`/${userType}`);
       } else {
         // Maneja el caso de credenciales incorrectas

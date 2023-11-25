@@ -1,47 +1,87 @@
 "use client";
-import React, { useState} from 'react';
-import {Input,Select, SelectItem,Textarea,Button} from "@nextui-org/react";
-import styles from '../../styles/styleop.module.css'
-import { motion } from "framer-motion"
-import Datosest from "../../components/datosest"
-export default function SoliPage() {
-	const [isVisible, setIsVisible] = useState(false);
-	const toggleVisibility = () => setIsVisible(!isVisible);
-	const [value, setValue] = React.useState("");
-	return (
-		<motion.div className={styles.base}>
-			<Datosest/>
-				<p className={styles.Text}>Datos de practica</p>
-			<div className={styles.boxout}>
-				<Select 
-					isRequired
-					label="Asignatura"
-					placeholder="Selecciona asignaturas"
-					defaultSelectedKeys={["cat"]}
-					className={styles.select}
-					>
-					</Select>
-				<Select
-					isRequired
-					label="Empresa"
-					placeholder="Selecciona empresa"
-					defaultSelectedKeys={["cat"]}
-					className={styles.select}
-					>
-					</Select>
-			</div>
-			<p className={styles.Text}>Datos de Empresa</p>
-			<div className={styles.datos}>
-				<div className={styles.box}>
-					<Input type="razon" placeholder="Razon social"/>
-					<Input type="rut_empresa" placeholder="RUT"/>
-					<Input type="rubro" placeholder="Rubro"/>
-				</div>
-				<div className={styles.textbox}>
-					<Textarea isRequired label="Descripcion" labelPlacement="outside" placeholder="Enter your description" className="descripcion"/>
-				</div>
-			</div>
-		</motion.div>
-	);
-	
-}
+import React, { useState } from 'react';
+import { Select, SelectItem, Image,Input } from '@nextui-org/react';
+import styles from "../../styles/styleop.module.css";
+
+export default function Lectura(){
+  const [direcciones] = useState([
+    { id: 1, nombre: 'san jose' },
+    { id: 2, nombre: 'asdassssd sdsdsd 2' },
+    { id: 3, nombre: 'bsddaaa 3' },
+    { id: 4, nombre: 'lo espejo 4' },
+    { id: 5, nombre: 'manantiales 5' },
+	{ id: 6, nombre: 'seco' },
+    // Agrega más direcciones según sea necesario
+  ]);
+
+  const [descripcion, setDescripcion] = useState('');
+  const [imagen, setImagen] = useState(null);
+  const [imagenPreview, setImagenPreview] = useState(null);
+  const [selectedDirection, setSelectedDirection] = useState(null);
+
+  const handleDescripcionChange = (e) => {
+    setDescripcion(e.target.value);
+  };
+
+  const handleImagenChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const previewURL = URL.createObjectURL(file);
+      setImagenPreview(previewURL);
+    }
+
+    setImagen(file);
+  };
+
+  const handleSelectChange = (value) => {
+    setSelectedDirection(value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log('Dirección seleccionada:', selectedDirection);
+    console.log('Descripción:', descripcion);
+    console.log('Imagen:', imagen);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={styles.forum}>
+      <label>
+        Dirección:
+        <Select
+          value={selectedDirection}
+          onChange={handleSelectChange}
+          placeholder="Buscar dirección..."
+        >
+          {direcciones.map((direccion) => (
+            <SelectItem key={direccion.id} value={direccion} she>
+              {direccion.nombre}
+            </SelectItem>
+          ))}
+        </Select>
+      </label>
+
+      <label>
+        Observaciones:
+        <textarea value={descripcion} onChange={handleDescripcionChange}></textarea>
+      </label>
+
+      <label>
+        Imagen:
+        <input type="file" accept="image/*" onChange={handleImagenChange} />
+      </label>
+
+      {imagenPreview && (
+        <Image
+          src={imagenPreview}
+          alt="Preview de la imagen"
+          style={{ maxWidth: '100%', marginTop: '10px' }}
+        />
+      )}
+
+      <button type="submit">Enviar</button>
+    </form>
+  );
+};
