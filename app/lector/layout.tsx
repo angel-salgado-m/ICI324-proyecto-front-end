@@ -1,4 +1,4 @@
-export default function Home_admin({
+export default function LectorLayout({
 	children,
 }: {
 	children: React.ReactNode;

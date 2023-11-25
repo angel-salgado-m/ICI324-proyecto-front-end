@@ -1,4 +1,4 @@
-export default function Trabajadores({
+export default function ForumLayout({
 	children,
 }: {
 	children: React.ReactNode;

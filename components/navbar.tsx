@@ -66,9 +66,6 @@ export const Navbar = () => {
 					))}
 				</div>
 			</NavbarMenu>
-			<NextLink href="/login">
-				<User></User>
-			</NextLink>
 		</NextUINavbar>
 	);
 };

@@ -1,4 +1,4 @@
-export default function Home_admin({
+export default function InspectorLayout({
 	children,
 }: {
 	children: React.ReactNode;

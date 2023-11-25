@@ -1,5 +1,4 @@
-import styles from '../../styles/styleop.module.css';
-export default function LoginLayout({
+export default function AdminLayout({
 	children,
 }: {
 	children: React.ReactNode;
@@ -12,4 +11,3 @@ export default function LoginLayout({
 		</section>
 	);
 }
-//{styles.fondologin}
