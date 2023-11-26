@@ -24,6 +24,10 @@ export default function Loginbox() {
       alert('Rut o contraseña inválidos');
       return;
     }
+
+    router.push('/administrador');
+
+
     // Configurar los datos para la solicitud a la API
     const userData = {
       rut: rut.raw, // rut.raw=(20111111-5);rut.formatted=(20.111.111-5)
@@ -46,14 +50,12 @@ export default function Loginbox() {
         if(userType == 'administrador'){
           localStorage.setItem('token', data.token);
           let token = localStorage.getItem('token');
-          console.log(token);
         }
         else{
           localStorage.setItem('token', data.token);
           //let token = localStorage.getItem('token');
           localStorage.setItem('cargo', data.cargo);
           localStorage.setItem('sector', data.sector);
-          console.log(token);
         }
         router.push(`/${userType}`);
       } else {
@@ -112,7 +114,7 @@ export default function Loginbox() {
         />
         <Input
           className={styles.input}
-          
+          size='lg'
           label="Password"
           variant="faded"
           labelPlacement='outside'
@@ -130,20 +132,19 @@ export default function Loginbox() {
               )}
             </button>}
         />
-        <div className={styles.bloque}>
+      </div>
+      <div className={styles.bloqueboton}>
           {loginError && (
             <div className="text-danger">{loginError}</div>
           )}
           {isLoading ? (
-            <Spinner size="lg" />
+            <Spinner color="secondary" size="lg"/>
           ) : (
             <Button className={styles.next} onClick={funcionlogin} disabled={isLoading}>
               {isLoading ? 'Ingresando...' : 'Ingresar'}
             </Button>
           )}
         </div>
-      </div>
-      
     </motion.div>
   );
 }

@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import { fontSans, fontteko } from "@/config/fonts";
+import { fontSans, fontteko, fontlexend } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
@@ -34,7 +34,7 @@ export default function RootLayout({
 			<body
 				className={clsx(
 					"min-h-screen bg-background font-teko antialiased",
-					fontteko.variable
+					fontlexend.variable
 				)}
 			>
 				<Providers themeProps={{ attribute: "class"}}>

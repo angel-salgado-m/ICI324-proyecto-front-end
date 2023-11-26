@@ -29,7 +29,7 @@ export default function Home() {
 						damping: 20
 					}} className={stayles.motionboton}>
 				<Button className={stayles.botonHome} onClick={handleButtonClick}>
-				Ingresar
+					Ingresar
 				</Button>
 				</motion.div>
 			)}
