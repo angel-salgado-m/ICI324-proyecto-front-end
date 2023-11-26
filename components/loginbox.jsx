@@ -42,9 +42,7 @@ export default function Loginbox() {
       if (response.status === 200) {
         // Si la respuesta es correcta, guarda el token en el localStorage
         const data = await response.json(); // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
-        //localStorage.setItem('token', token);
-        //localStorage.setItem('cargo', cargo);
-        console.log(data)
+        localStorage.setItem('token', token);
         const userType = data.cargo;
         router.push(`/${userType}`);
       } else {
