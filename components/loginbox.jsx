@@ -42,12 +42,12 @@ export default function Loginbox() {
         },
         body: JSON.stringify(userData),
       });
-      if (response.ok) {
+      if (response.status === 200) {
         // Si la respuesta es correcta, guarda el token en el localStorage
         const { token, cargo } = response.data; // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
-        localStorage.setItem('token', token);
-        localStorage.setItem('cargo', cargo);
-        userType=cargo.toLowerCase();
+        //localStorage.setItem('token', token);
+        //localStorage.setItem('cargo', cargo);
+        userType=cargo;
         router.push(`/${userType}`);
       } else {
         // Maneja el caso de credenciales incorrectas
