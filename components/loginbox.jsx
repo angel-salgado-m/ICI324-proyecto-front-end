@@ -47,7 +47,8 @@ export default function Loginbox() {
         const { token, cargo } = response.data; // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
         //localStorage.setItem('token', token);
         //localStorage.setItem('cargo', cargo);
-        userType=cargo;
+        console.log(response.data)
+        const userType=cargo;
         router.push(`/${userType}`);
       } else {
         // Maneja el caso de credenciales incorrectas
