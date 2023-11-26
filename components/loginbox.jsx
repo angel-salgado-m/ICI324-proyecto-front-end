@@ -18,7 +18,7 @@ export default function Loginbox() {
   const handleClickInside = (e) => {
     e.stopPropagation();
   };
-  const backendUrl = 'http://localhost:3200';//cambiar al .env en un futuro
+  const backendUrl = 'http://localhost:3030';//cambiar al .env en un futuro
   const funcionlogin = async () => {
     
     router.push('/lector');//redirecciona a la pagina de inicio de cada usuario por el momento*****
@@ -35,7 +35,7 @@ export default function Loginbox() {
 
     try {
       setIsLoading(true);
-      const response = await fetch(`${backendUrl}/login-${userType}`, {
+      const response = await fetch(`${backendUrl}/trabajador/login/sql,`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
