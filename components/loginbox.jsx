@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { EyeFilledIcon } from "../components/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "../components/EyeSlashFilledIcon";
-import { Input, Button, Spinner } from "@nextui-org/react";
+import { Input, Button, Spinner, user } from "@nextui-org/react";
 import { useRut } from "react-rut-formatter";
 import { useRouter,useSearchParams } from 'next/navigation'; // Importa el router de Next.js
 import styles from '../styles/styleop.module.css'
@@ -43,9 +43,18 @@ export default function Loginbox() {
         // Si la respuesta es correcta, guarda el token en el localStorage
         const data = await response.json(); // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
         const userType = data.cargo;
-        localStorage.setItem('token', data.token);
-        let token = localStorage.getItem('token');
-        console.log(token);
+        if(userType == 'administrador'){
+          localStorage.setItem('token', data.token);
+          let token = localStorage.getItem('token');
+          console.log(token);
+        }
+        else{
+          localStorage.setItem('token', data.token);
+          //let token = localStorage.getItem('token');
+          localStorage.setItem('cargo', data.cargo);
+          localStorage.setItem('sector', data.sector);
+          console.log(token);
+        }
         router.push(`/${userType}`);
       } else {
         // Maneja el caso de credenciales incorrectas
