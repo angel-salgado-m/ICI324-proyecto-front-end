@@ -20,8 +20,6 @@ export default function Loginbox() {
   };
   const backendUrl = 'http://localhost:3030';//cambiar al .env en un futuro
   const funcionlogin = async () => {
-    
-    router.push('/lector');//redirecciona a la pagina de inicio de cada usuario por el momento*****
     if (!isValid || !rut.raw || !password) {
       alert('Rut o contraseña inválidos');
       return;
@@ -32,7 +30,6 @@ export default function Loginbox() {
       password: password,
     };
     // Realiza la solicitud a la API
-
     try {
       setIsLoading(true);
       const response = await fetch(`${backendUrl}/trabajador/login/sql,`, {
@@ -44,11 +41,11 @@ export default function Loginbox() {
       });
       if (response.status === 200) {
         // Si la respuesta es correcta, guarda el token en el localStorage
-        const { token, cargo } = response.data; // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
+        const data = await response.json(); // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
         //localStorage.setItem('token', token);
         //localStorage.setItem('cargo', cargo);
-        console.log(response.data)
-        const userType=cargo;
+        console.log(data)
+        const userType = data.cargo;
         router.push(`/${userType}`);
       } else {
         // Maneja el caso de credenciales incorrectas
