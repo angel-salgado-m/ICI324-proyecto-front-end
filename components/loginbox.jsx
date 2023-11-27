@@ -42,8 +42,8 @@ export default function Loginbox() {
       if (response.status === 200) {
         const data = await response.json();
         const userType = data.cargo;
-        // Redirigir a la siguiente vista con los datos necesarios
-        router.push(`/${userType}?token=${data.token}${data.sector ? `&sector=${data.sector}` : ''}`);
+        const queryParams = `?token=${data.token}${data.sector ? `&sector=${data.sector}` : ''}&cargo=${userType}`;
+        router.push(`/${userType}${queryParams}`);
       } else {
         // Maneja el caso de credenciales incorrectas
         alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");

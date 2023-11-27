@@ -9,6 +9,7 @@ import { getdxs } from "../../api/direccionApi";
 export default function LectorPage() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+
 	const [token, setToken] = useState();
 	const [sector, setSector] = useState();
 	const [dxs, setdxs]= useState();
@@ -34,15 +35,17 @@ export default function LectorPage() {
 			</div>
 			<div className={styles.boxout}>
 				Generar
-				<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Novedad' }}} >
-					<Button className={styles.boxout}>Novedad Boton</Button>
-				</NextLink>
-				<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Lectura' }}}>
-					<Button className={styles.boxout}>Lectura Boton</Button>
-				</NextLink>
-				<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Revision' }}}>
-					<Button className={styles.boxout}>Revision Boton</Button>
-				</NextLink>
+				<div className="grid">
+					<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Novedad',cargo:}}} >
+						<Button className={styles.boxout}>Novedad Boton</Button>
+					</NextLink>
+					<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Lectura' }}}>
+						<Button className={styles.boxout}>Lectura Boton</Button>
+					</NextLink>
+					<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Revision' }}}>
+						<Button className={styles.boxout}>Revision Boton</Button>
+					</NextLink>
+				</div>
 			</div>
 		</div>
 	);
