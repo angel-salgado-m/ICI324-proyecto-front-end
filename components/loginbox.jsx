@@ -24,10 +24,6 @@ export default function Loginbox() {
       alert('Rut o contraseña inválidos');
       return;
     }
-
-    router.push('/administrador');
-
-
     // Configurar los datos para la solicitud a la API
     const userData = {
       rut: rut.raw, // rut.raw=(20111111-5);rut.formatted=(20.111.111-5)

@@ -275,3 +275,49 @@
 .spinner{
     color:"success";
 }
+.panel1{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+    flex-direction: column      ;
+    justify-content: space-evenly;
+    align-items: center;
+    width: "70%"; 
+    height: "100%"; 
+    border-radius: 0%; 
+    padding: 16px;
+    margin-top: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e5e5;
+}
+.panel2 {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Dos filas: una para el título y otra para los dos elementos debajo */
+    gap: 10px;
+    justify-content: center; /* Centra verticalmente en el contenedor */
+    width: 70%;
+    height: 100%;
+    border-radius: 0%;
+    padding: 16px;
+    margin-top: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e5e5;
+  }
+ .title {
+    grid-row: 1; /* Ocupa la primera fila */
+    justify-self: center; /* Centra horizontalmente dentro de su fila */
+  }
+.items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-row: 2; /* Ocupa la segunda fila */
+  }
+  .bloquetable {
+    color: #000000; /* Color de la letra */
+  }
+  
+  .tablecell {
+    color: #032046; /* Color de la letra */
+    background-color: #95c3ff; /* Color de fondo gris oscuro para las celdas */
+  }
