@@ -7,12 +7,14 @@ import styles from '../../styles/styleop.module.css'
 import { motion } from "framer-motion"
 import { getalltrabajadores } from '../../api/trabajadorApi';
 import { getallsectores } from '../../api/sectorApi';
+import { getallregistros } from '../../api/registroApi';
 import Listar from '../../components/tabla';
 
 export default function AdminPage() {
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [datosW, setDatosW] = useState([]);
   const [datosS, setDatosS] = useState([]);
+  const [datosR, setDatosR] = useState([]);
   const worker = {
     rut: 'rut',
     nombre: 'nombre',
@@ -47,15 +49,16 @@ export default function AdminPage() {
     setDatosS(datosS);
   };
   const fetchregistro = async () => {
-    const datosS = (await getallregistros(sector));
-    setDatosS(datosS);
+    const dato = (await getallregistros(registro));
+    const datosR=dato.data;
+    const count=dato.count;
+    setDatosS(datosR);
   };
   const renderComponent = () => {
     switch (selectedComponent) {
 		case 'Trabajadores':
     		return <Listar columns={worker} data={datosW} />;
     	case 'Sectores':
-			
         	return <Listar columns={sector} data={datosS} />;
       	case 'hoy':
         	return null;
@@ -68,7 +71,7 @@ export default function AdminPage() {
   return (
     <div className={styles.base}>
       <div className={styles.panel1}>
-        <Button className={styles.boxout} >
+        <Button className={styles.boxout} onClick={() =>{fetchregistro(); setSelectedComponent('Trabajadores');} }>
           REG de hoy
         </Button>
         <Button className={styles.boxout}>
