@@ -17,6 +17,7 @@ export default function AdminPage() {
   const worker = {
     rut: 'rut',
     nombre: 'nombre',
+    idSector: 'idSector',
     apellido: 'apellido',
     password: 'password',
     cargo: 'cargo',
@@ -24,9 +25,9 @@ export default function AdminPage() {
   };
   const sector = {
     idSector: 'idSector',
-	idRuta: 'idRuta',
-	sucursal: 'sucursal',
-	locomocion: 'locomocion',
+    idRuta: 'idRuta',
+    sucursal: 'sucursal',
+    locomocion: 'locomocion',
   };
   const fetchWorker = async () => {
     const datosW = (await getalltrabajadores(worker)).trabajadores;
