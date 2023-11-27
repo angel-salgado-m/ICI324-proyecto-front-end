@@ -1,8 +1,8 @@
 const backendUrl = 'http://localhost:3030';
 const bdtype = 'sql';
-export const getallsectores = async () => {
+export const getdxs = async (id) => {
   try {
-    const response = await fetch(`${backendUrl}/sector/allSectores/${bdtype}`, {
+    const response = await fetch(`${backendUrl}/direccion/dxs/${id}/${bdtype}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -11,10 +11,9 @@ export const getallsectores = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      return data;
+      return data.direcciones;
     } else {
-      alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+      alert("No hay direcciones registradas para este sector");
     }
   } catch (error) {
     alert("Se produjo un error");

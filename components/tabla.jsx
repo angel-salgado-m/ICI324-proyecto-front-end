@@ -24,7 +24,7 @@ export default function Listar({ columns, data }) {
 
   return (
     <div className={styles.bloquetable} id='boxasd'>
-      <Table id='tableasd'
+      <Table
         aria-label='Tabla de datos'
         className={styles.styltable}
         bottomContent={

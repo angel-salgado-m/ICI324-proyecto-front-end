@@ -32,7 +32,7 @@ export default function Loginbox() {
     // Realiza la solicitud a la API
     try {
       setIsLoading(true);
-      const response = await fetch(`${backendUrl}/trabajador/login/sql,`, {
+      const response = await fetch(`${backendUrl}/trabajador/login/sql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,20 +40,10 @@ export default function Loginbox() {
         body: JSON.stringify(userData),
       });
       if (response.status === 200) {
-        // Si la respuesta es correcta, guarda el token en el localStorage
-        const data = await response.json(); // Aquí asumimos que los datos se encuentran en la propiedad 'data' de la respuesta
+        const data = await response.json();
         const userType = data.cargo;
-        if(userType == 'administrador'){
-          localStorage.setItem('token', data.token);
-          let token = localStorage.getItem('token');
-        }
-        else{
-          localStorage.setItem('token', data.token);
-          //let token = localStorage.getItem('token');
-          localStorage.setItem('cargo', data.cargo);
-          localStorage.setItem('sector', data.sector);
-        }
-        router.push(`/${userType}`);
+        // Redirigir a la siguiente vista con los datos necesarios
+        router.push(`/${userType}?token=${data.token}${data.sector ? `&sector=${data.sector}` : ''}`);
       } else {
         // Maneja el caso de credenciales incorrectas
         alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
