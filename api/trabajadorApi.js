@@ -1,6 +1,6 @@
 const backendUrl = 'http://localhost:3030';
 const bdtype = 'sql';
-export const getalltrabajadores = async (data) => {
+export const getalltrabajadores = async () => {
   try {
     const response = await fetch(`${backendUrl}/trabajador/allTrabajadores/${bdtype}`, {
       method: 'GET',

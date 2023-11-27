@@ -1,6 +1,6 @@
 const backendUrl = 'http://localhost:3030';
 const bdtype = 'sql';
-export const getallregistros = async (data) => {
+export const getallregistros = async () => {
   try {
     const response = await fetch(`${backendUrl}/registro/allInconclusos/${bdtype}`, {
       method: 'GET',
@@ -10,8 +10,8 @@ export const getallregistros = async (data) => {
     });
 
     if (response.ok) {
-      const data = await response.json();
-      console.log(data);
+      const dato = await response.json();
+      const data = dato.data;
       return data;
     } else {
       alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");

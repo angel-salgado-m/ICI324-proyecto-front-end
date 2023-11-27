@@ -15,6 +15,9 @@ export default function AdminPage() {
   const [datosW, setDatosW] = useState([]);
   const [datosS, setDatosS] = useState([]);
   const [datosR, setDatosR] = useState([]);
+  const [pending, setPending]= useState();
+  const [news, setNews]= useState();
+  const [datosRn, setDatosRn] = useState([]);
   const worker = {
     rut: 'rut',
     nombre: 'nombre',
@@ -49,10 +52,9 @@ export default function AdminPage() {
     setDatosS(datosS);
   };
   const fetchregistro = async () => {
-    const dato = (await getallregistros(registro));
-    const datosR=dato.data;
-    const count=dato.count;
-    setDatosS(datosR);
+    const datosR = (await getallregistros());
+    setPending(datosR.length);
+    setDatosR(datosR);
   };
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -63,19 +65,30 @@ export default function AdminPage() {
       	case 'hoy':
         	return null;
       	case 'pendiente':
-        	return null;
+        	return <Listar columns={registro} data={datosR} />;
+          case 'news':
+            return <Listar columns={registro} data={datosRn} />;
       	default:
         	return null;
     }
   };
+  useEffect(() => {
+    fetchregistro();
+    const intervalId = setInterval(() => {fetchregistro();}, 60000);
+  }, []);
+
+  useEffect(() => {
+    // Actualiza los datos de la tabla cuando cambia la prop 'data'
+    setPending(pending);
+  }, [pending]);
   return (
     <div className={styles.base}>
       <div className={styles.panel1}>
-        <Button className={styles.boxout} onClick={() =>{fetchregistro(); setSelectedComponent('Trabajadores');} }>
-          REG de hoy
-        </Button>
         <Button className={styles.boxout}>
-          REG pendientes
+          <p>Registros actuales{'\n'+news}</p>
+        </Button>
+        <Button className={styles.boxout} onClick={() =>{fetchregistro(); setSelectedComponent('pendiente');} }>
+          <p>Registros pendientes{'\n'+pending}</p>
         </Button>
       </div>
       <div className={styles.panel2}>
