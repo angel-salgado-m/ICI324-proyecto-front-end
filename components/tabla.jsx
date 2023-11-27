@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination } from "@nextui-org/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination, Button } from "@nextui-org/react";
 import styles from '../styles/styleop.module.css';
 
 export default function Listar({ columns, data }) {
@@ -23,10 +23,10 @@ export default function Listar({ columns, data }) {
   }, [data]);
 
   return (
-    <div className={styles.bloquetable}>
-      <Table 
-        aria-label="Lista"
-        className={styles.table}
+    <div className={styles.bloquetable} id='boxasd'>
+      <Table id='tableasd'
+        aria-label='Tabla de datos'
+        className={styles.styltable}
         bottomContent={
           <div className="flex w-full justify-center">
             <Pagination
@@ -37,19 +37,22 @@ export default function Listar({ columns, data }) {
               total={pages}
               onChange={(page) => setPage(page)}
             />
+            <Button></Button>
           </div>
         }
       >
         <TableHeader>
           {Object.keys(columns).map((column) => (
-            <TableColumn key={column}>{columns[column]}</TableColumn>
+            <TableColumn key={column} className={styles.tableheader}>{columns[column]}</TableColumn>
           ))}
         </TableHeader>
-        <TableBody items={items}>
+        <TableBody items={items} className={styles.tablebody} id='tableBodY'>
           {(item) => (
-            <TableRow key={Object.values(item).join('-')}>
+            <TableRow key={Object.values(item).join('-')} className={styles.tablerow}>
               {Object.keys(columns).map((column) => (
-                <TableCell key={column}>{item[column]}</TableCell>
+                <TableCell key={column} className={styles.cell}>
+                {column === 'fecha' ? item[column].split('T')[0] : item[column]}
+              </TableCell>
               ))}
             </TableRow>
           )}

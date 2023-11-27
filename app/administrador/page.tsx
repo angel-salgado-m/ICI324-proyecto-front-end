@@ -7,7 +7,7 @@ import styles from '../../styles/styleop.module.css'
 import { motion } from "framer-motion"
 import { getalltrabajadores } from '../../api/trabajadorApi';
 import { getallsectores } from '../../api/sectorApi';
-import { getallregistros } from '../../api/registroApi';
+import { getallregistros, getRNews} from '../../api/registroApi';
 import Listar from '../../components/tabla';
 
 export default function AdminPage() {
@@ -23,10 +23,8 @@ export default function AdminPage() {
     nombre: 'nombre',
     apellido: 'apellido',
     idSector: 'idSector',
-    password: 'password',
     cargo: 'cargo',
     horario: 'horario',
-    imgWorker: 'imgWorker',
   };
   const sector = {
     idSector: 'idSector',
@@ -44,17 +42,22 @@ export default function AdminPage() {
     fecha:'fecha',
   };
   const fetchWorker = async () => {
-    const datosW = (await getalltrabajadores(worker));
+    const datosW = (await getalltrabajadores());
     setDatosW(datosW);
   };
   const fetchSector = async () => {
-    const datosS = (await getallsectores(sector));
+    const datosS = (await getallsectores());
     setDatosS(datosS);
   };
-  const fetchregistro = async () => {
+  const fetchpening = async () => {
     const datosR = (await getallregistros());
     setPending(datosR.length);
     setDatosR(datosR);
+  };
+  const fetchnews = async () => {
+    const datosRn = (await getRNews());
+    setNews(datosRn.length);
+    setDatosRn(datosRn);
   };
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -73,21 +76,23 @@ export default function AdminPage() {
     }
   };
   useEffect(() => {
-    fetchregistro();
-    const intervalId = setInterval(() => {fetchregistro();}, 60000);
+    fetchpening();
+    fetchnews();
+    const intervalId = setInterval(() => {fetchpening();fetchnews();}, 60000);
   }, []);
 
   useEffect(() => {
     // Actualiza los datos de la tabla cuando cambia la prop 'data'
     setPending(pending);
-  }, [pending]);
+    setNews(news);
+  }, [pending,news]);
   return (
     <div className={styles.base}>
       <div className={styles.panel1}>
-        <Button className={styles.boxout}>
+        <Button className={styles.boxout} onClick={() =>{fetchpening(); setSelectedComponent('news');} }>
           <p>Registros actuales{'\n'+news}</p>
         </Button>
-        <Button className={styles.boxout} onClick={() =>{fetchregistro(); setSelectedComponent('pendiente');} }>
+        <Button className={styles.boxout} onClick={() =>{fetchpening(); setSelectedComponent('pendiente');} }>
           <p>Registros pendientes{'\n'+pending}</p>
         </Button>
       </div>

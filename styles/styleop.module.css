@@ -316,8 +316,25 @@
   .bloquetable {
     color: #000000; /* Color de la letra */
   }
-  
-  .tablecell {
+  .styltable{
+    background-color: #000000;
+    width: 100%;
+  }
+  .tableheader {
+    min-width: 100px;
     color: #032046; /* Color de la letra */
-    background-color: #95c3ff; /* Color de fondo gris oscuro para las celdas */
+    background-color: #95c3ff;
+    font-size: medium;
+  }	
+  .cell {
+    min-width: 100px;
+    color: #032046; /* Color de la letra */
+    font-size: medium;
+  }
+  .tablerow{
+    color: #e5e5e5;
+  }
+  .tablebody{
+    color: #e5e5e5;
+    background-color: #95c3ff;
   }
