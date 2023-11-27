@@ -29,12 +29,25 @@ export default function AdminPage() {
     sucursal: 'sucursal',
     locomocion: 'locomocion',
   };
+  const registro = {
+    idRegistro:'idRegistro',
+    idDireccion:'idDireccion',
+    tipo:' tipo',
+    descripcion:'descripcion',
+    estado:'estado',
+    idImg:'idImg',
+    fecha:'fecha',
+  };
   const fetchWorker = async () => {
     const datosW = (await getalltrabajadores(worker));
     setDatosW(datosW);
   };
   const fetchSector = async () => {
     const datosS = (await getallsectores(sector));
+    setDatosS(datosS);
+  };
+  const fetchregistro = async () => {
+    const datosS = (await getallregistros(sector));
     setDatosS(datosS);
   };
   const renderComponent = () => {
