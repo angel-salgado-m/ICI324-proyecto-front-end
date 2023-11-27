@@ -9,7 +9,6 @@ import { getdxs } from "../../api/direccionApi";
 export default function LectorPage() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-
 	const [token, setToken] = useState();
 	const [sector, setSector] = useState();
 	const [dxs, setdxs]= useState();
@@ -35,8 +34,8 @@ export default function LectorPage() {
 			</div>
 			<div className={styles.boxout}>
 				Generar
-				<div className="grid">
-					<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Novedad',cargo:}}} >
+				<div>
+					<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Novedad' }}} >
 						<Button className={styles.boxout}>Novedad Boton</Button>
 					</NextLink>
 					<NextLink className="flex justify-start items-center gap-1" href={{pathname:'/forum',query: {forumtype:'Lectura' }}}>
