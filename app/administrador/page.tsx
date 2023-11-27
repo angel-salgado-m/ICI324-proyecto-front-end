@@ -13,15 +13,15 @@ export default function AdminPage() {
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [datosW, setDatosW] = useState([]);
   const [datosS, setDatosS] = useState([]);
-
   const worker = {
     rut: 'rut',
     nombre: 'nombre',
-    idSector: 'idSector',
     apellido: 'apellido',
+    idSector: 'idSector',
     password: 'password',
     cargo: 'cargo',
     horario: 'horario',
+    imgWorker: 'imgWorker',
   };
   const sector = {
     idSector: 'idSector',
@@ -30,11 +30,11 @@ export default function AdminPage() {
     locomocion: 'locomocion',
   };
   const fetchWorker = async () => {
-    const datosW = (await getalltrabajadores(worker)).trabajadores;
+    const datosW = (await getalltrabajadores(worker));
     setDatosW(datosW);
   };
   const fetchSector = async () => {
-    const datosS = (await getallsectores(sector)).sectores;
+    const datosS = (await getallsectores(sector));
     setDatosS(datosS);
   };
   const renderComponent = () => {

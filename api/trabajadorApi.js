@@ -11,7 +11,7 @@ export const getalltrabajadores = async (data) => {
 
     if (response.ok) {
       const data = await response.json();
-      return data;
+      return data.data;
     } else {
       alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
     }
