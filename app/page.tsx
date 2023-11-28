@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import {Button, ButtonGroup} from "@nextui-org/react";
 import stayles from "../styles/styleop.module.css";
-import Loginbox from "../components/loginbox";
+import Loginbox from '@/components/Loginbox';
 import {motion} from "framer-motion"
 export default function Home() {
 	const [showLogin, setShowLogin] = useState(false);

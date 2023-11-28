@@ -44,10 +44,7 @@ export default function Loginbox() {
         const userType = data.cargo;
         const queryParams = `?token=${data.token}${data.sector ? `&sector=${data.sector}` : ''}&cargo=${userType}`;
         router.push(`/${userType}${queryParams}`);
-      } else {
-        // Maneja el caso de credenciales incorrectas
-        alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
-      }
+      } else {alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");}
     } catch (error) {
       // Maneja errores de red o de servidor
       console.error('Error al iniciar sesión:', error);

@@ -51,6 +51,8 @@ export default function Lectura(){
       <label>
         Dirección:
         <Select
+          aria-label="direccion"
+          aria-labelledby="direccion"
           value={selectedDirection}
           onChange={handleSelectChange}
           placeholder="Buscar dirección..."
