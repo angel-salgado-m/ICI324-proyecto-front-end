@@ -101,7 +101,7 @@ module.exports = {
         'uv-black-800': '#151515',
         'uv-black-900': '#000000',
 
-        'base-1': '#3e4d64',
+        'base-1': '#E4C14D',
         'base-2': '#86B1CD',
         'base-3': '#43516E',
         'base-4': '#5d6a81',
@@ -114,7 +114,6 @@ module.exports = {
 
         'login-1': '#5C87AC',
         'login-2': '#b8ddef',
-        
         'boton-1': '#5C87AC',
       }
     },

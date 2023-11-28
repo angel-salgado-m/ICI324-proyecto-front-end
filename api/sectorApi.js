@@ -11,7 +11,6 @@ export const getallsectores = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       return data;
     } else {
       alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");

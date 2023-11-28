@@ -314,92 +314,133 @@
   font-size: medium;
 }
 
-
+.sectionAdmin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .divladmmin {
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
+  
 }
 .bloqueadmin {
   display: flex;
-  width: 100%;
-  background-color: #00429a;
-  flex-direction: column;
+  flex-direction: row;
+  @apply bg-gradient-to-t from-base-2 via-base-10 to-base-3;
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 30px;
+  gap: 20px;
+  border: #000000 2px solid;
+  box-shadow: #00429a 0px 0px 12px 0px;
+  border-radius: 2ch;
 }
 .panel1 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  display: flex;
+  background-color: #f8f8f8;
+  align-self: flex-start;
+  justify-self: flex-start;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  width: "70%";
-  height: "100%";
-  border-radius: 0%;
-  padding: 16px;
-  margin-top: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e5e5;
+  gap: 20px;
+  width: 40%;
+  height: 700px;
+  padding: 20px;
+  box-shadow: #454545 0px 0px 12px 0px;
+  border-radius: 2ch;
+}
+.grafico{
+  display: flex;
+  background-color: transparent;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 330px;
+  width: 100%;
+  border-radius: 2ch;
+  box-shadow: #454545 0px 0px 12px 0px;
 }
 .badmin{
   display: flex;
-  width: 100%;
-  background-color: #00429a;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  height: 140px;
+  padding: 12px;
+  @apply bg-gradient-to-tl from-uv-blue-200 to-uv-blue-900;
+  align-self: flex-start; /* Alinea el elemento en la parte superior */
+  justify-self: flex-start;
+  font-size: xx-large;
+  box-shadow: #454545 0px 0px 12px 0px;
+}
+.padmin{
+  color:#e5e5e5;
+  padding: 12px;
 }
 .panel2 {
-  display: grid;
-  grid-template-rows: auto 1fr; /* Dos filas: una para el título y otra para los dos elementos debajo */
-  gap: 10px;
-  justify-content: center; /* Centra verticalmente en el contenedor */
-  width: 70%;
-  height: 100%;
-  border-radius: 0%;
-  padding: 16px;
-  margin-top: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e5e5;
-}
-.panel3 {
-  display: grid;
-  grid-template-rows: auto 1fr; /* Dos filas: una para el título y otra para los dos elementos debajo */
-  gap: 10px;
-  justify-content: center; /* Centra verticalmente en el contenedor */
-  width: 70%;
-  height: 100%;
-  border-radius: 0%;
-  padding: 16px;
-  margin-top: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e5e5;
-}
-.itemsadmin {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  grid-row: 2; /* Ocupa la segunda fila */
-}
-.botonx{
   display: flex;
+  background-color: #f8f8f8;
+  flex-direction: column; /* Alinea los elementos en una columna */
+  align-items: center; /* Centra horizontalmente los elementos en el contenedor */
+  justify-content: center; /* Centra verticalmente los elementos en el contenedor */
+  width: 1050px;
+  height: 700px;
+  padding: 16px;
+  box-shadow: #454545 0px 0px 12px 0px;
+  border-radius: 2ch;
+}
+.titleadmin {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-uv-blue-700 to-uv-blue-100;
+  font-size: 10ch;
   align-self: center;
   justify-self: center;
-  background-image: url("../public/botonSVG.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-color: transparent;
-  box-shadow: #0b58bc 0px 0px 55px 0px;
-  border: transparent;
-  border-radius: 1ch;
-  width: 340px;
-  height: 100px;
-  margin-top: 40%;
-  transition: box-shadow 0.3s ease-in-out; /* Agregamos una transición para hacerlo más suave */
+  height: 25%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #b3b3b393 ;
+}
+.itemsadmin {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  grid-row: 2;
+  height: 10%; /* Ocupa la segunda fila */
+  width: 100%;
+}
+.itemsadmin > :not(:last-child) {
+  margin-right: 0%;
+}
+.itemsadmin > :last-child {
+  margin-left: 60%;
+}
+.itemsb{
+  color: #e5e5e5;
+  background-color: #3386CD;
+  font-size: large;
+  width: 180px;
+  box-shadow: #646464 0px 0px 8px 0px;
+}
+.bxadmin{
+  @apply bg-gradient-to-tl from-uv-red-500 to-uv-red-900;
+  color:#e5e5e5;
+  box-shadow: #646464 0px 0px 8px 0px;
+}
+
+.panel3 {
+  display: flex;
+  justify-content: center; /* Centra verticalmente en el contenedor */
+  width: 100%;
+  height: 90%;
+  border-radius: 0%;
+  padding: 16px;
+  margin-top: 8px;
+  background-color: #f8f8f8; /* Cambia el color de fondo */
+  box-shadow: #454545 0px 0px 12px 0px; /* Cambia el color de la sombra */
+  border-radius: 2ch;
 }

@@ -90,23 +90,27 @@ export default function AdminPage() {
     <div className={styles.bloqueadmin}>
       <div className={styles.panel1}>
         <Button className={styles.badmin} onClick={() =>{fetchpening(); setSelectedComponent('news');} }>
-          <p>Registros actuales{'\n'+news}</p>
+          <p className={styles.padmin} >Registros actuales:</p>
+          <p className={styles.padmin}>{news}</p>
         </Button>
         <Button className={styles.badmin} onClick={() =>{fetchpening(); setSelectedComponent('pendiente');} }>
-          <p>Registros pendientes{'\n'+pending}</p>
+          <p className={styles.padmin}>Registros pendientes</p>
+          <p className={styles.padmin}>{pending}</p>
         </Button>
-      </div>
-      <div className={styles.panel2}>
-        <p className={styles.title}>modificacion de datos</p>
-        <div className={styles.itemsadmin}>
-          <Button onClick={() =>{fetchWorker(); setSelectedComponent('Trabajadores');} }>Trabajadores</Button>
-          <Button onClick={() =>{fetchSector(); setSelectedComponent('Sectores')}}>Sectores Boton</Button>
+        <div className={styles.grafico}>
         </div>
       </div>
-	  <div className={styles.panel3}>
-	  	<Button className={styles.botonx}onClick={() => setSelectedComponent(null)}>X</Button>
-	  	{renderComponent()}
-	  </div>
+      <div className={styles.panel2}>
+        <p className={styles.titleadmin}>DATOS</p>
+        <div className={styles.itemsadmin}>
+          <Button className={styles.itemsb} onClick={() =>{fetchWorker(); setSelectedComponent('Trabajadores');} }>Trabajadores</Button>
+          <Button className={styles.itemsb} onClick={() =>{fetchSector(); setSelectedComponent('Sectores')}}>Sectores</Button>
+          <Button className={styles.bxadmin}onClick={() => setSelectedComponent(null)}>X</Button>
+        </div>
+        <div className={styles.panel3}>
+          {renderComponent()}
+        </div>
+      </div>
     </div>
   );
 }

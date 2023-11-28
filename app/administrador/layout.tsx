@@ -5,7 +5,7 @@ export default function AdminLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<section className={styles.layoutAdmin}>
+		<section className={styles.sectionAdmin}>
 			<div className={styles.divladmin}>
 				{children}
 			</div>

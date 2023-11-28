@@ -33,7 +33,7 @@ export default function RootLayout({
 			<head />
 			<body
 				className={clsx(
-					"min-h-screen bg-background font-teko antialiased",
+					"max-h-screen bg-background font-teko antialiased",
 					fontlexend.variable
 				)}
 			>
