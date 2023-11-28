@@ -31,22 +31,24 @@ export default function InspectorPage() {
   }, [sector]);
 
   return (
-    <div className={styles.base}>
-      <div className={styles.boxout}>
-        <div className={styles.boxout}>Sector Asignado: {sector}</div>
-        <div className={styles.boxout}>Direcciones totales: {dxs}</div>
+    <div className={styles.bloqueInspector}>
+      <div className={styles.panelInspector1}>
+        <div className={styles.bpanelins1}>Sectores Asignados: {sector}</div>
+        <div className={styles.bpanelins1}>Direcciones asignadas: {dxs}</div>
       </div>
-      <div className={styles.boxout}>
-        Generar
-        <div>
+      <div className={styles.panelInspector2}>
+        <div className={styles.graficoInspector}>
+
+        </div>
+        <div className={styles.bottvar}>
           <NextLink href={{ pathname: '/forum', query: { ...queryParams, forumtype: 'Novedad' } }}>
-            <Button className={styles.boxout}>Novedad Boton</Button>
+            <Button className={styles.bNovedad}>Novedad</Button>
           </NextLink>
           <NextLink href={{ pathname: '/forum', query: { ...queryParams, forumtype: 'Lectura' } }}>
-            <Button className={styles.boxout}>Lectura Boton</Button>
+            <Button className={styles.bLectura}>Lectura</Button>
           </NextLink>
           <NextLink href={{ pathname: '/forum', query: { ...queryParams, forumtype: 'Revision' } }}>
-            <Button className={styles.boxout}>Revision Boton</Button>
+            <Button className={styles.bRevision}>Revision</Button>
           </NextLink>
         </div>
       </div>
