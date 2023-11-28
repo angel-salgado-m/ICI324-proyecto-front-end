@@ -37,7 +37,7 @@ export default function Listar({ columns, data }) {
               total={pages}
               onChange={(page) => setPage(page)}
             />
-            <Button></Button>
+            <Button className={styles.Dowload}>Descargar</Button>
           </div>
         }
       >

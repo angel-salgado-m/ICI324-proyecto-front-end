@@ -34,7 +34,8 @@ export default function ForumPage() {
 	  fetchDxs(sector);
 	}, [sector]);
 
-	const datos=datosDxs.map(direccion => ({id: direccion.idDireccion,name: direccion.pob,}));
+	const datos=datosDxs.map(direccion => ({id: direccion.idDireccion,name: direccion.direccion,}));
+	console.log(datos);
 	return (
 		<div>
 			<NextLink href={{pathname: `/${queryParams.cargo}`, query:queryParams}}>

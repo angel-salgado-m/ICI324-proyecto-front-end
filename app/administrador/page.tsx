@@ -36,6 +36,7 @@ export default function AdminPage() {
     idRegistro:'idRegistro',
     idDireccion:'idDireccion',
     tipo:' tipo',
+    asunto:'asunto',
     descripcion:'descripcion',
     estado:'estado',
     idImg:'idImg',
@@ -47,7 +48,7 @@ export default function AdminPage() {
   };
   const fetchSector = async () => {
     const datosS = (await getallsectores());
-    setDatosS(datosS);
+    setDatosS(datosS.data);
   };
   const fetchpening = async () => {
     const datosR = (await getallregistros());
@@ -80,31 +81,30 @@ export default function AdminPage() {
     fetchnews();
     const intervalId = setInterval(() => {fetchpening();fetchnews();}, 60000);
   }, []);
-
   useEffect(() => {
     // Actualiza los datos de la tabla cuando cambia la prop 'data'
     setPending(pending);
     setNews(news);
   }, [pending,news]);
   return (
-    <div className={styles.base}>
+    <div className={styles.bloqueadmin}>
       <div className={styles.panel1}>
-        <Button className={styles.boxout} onClick={() =>{fetchpening(); setSelectedComponent('news');} }>
+        <Button className={styles.badmin} onClick={() =>{fetchpening(); setSelectedComponent('news');} }>
           <p>Registros actuales{'\n'+news}</p>
         </Button>
-        <Button className={styles.boxout} onClick={() =>{fetchpening(); setSelectedComponent('pendiente');} }>
+        <Button className={styles.badmin} onClick={() =>{fetchpening(); setSelectedComponent('pendiente');} }>
           <p>Registros pendientes{'\n'+pending}</p>
         </Button>
       </div>
       <div className={styles.panel2}>
         <p className={styles.title}>modificacion de datos</p>
-        <div className={styles.items}>
+        <div className={styles.itemsadmin}>
           <Button onClick={() =>{fetchWorker(); setSelectedComponent('Trabajadores');} }>Trabajadores</Button>
           <Button onClick={() =>{fetchSector(); setSelectedComponent('Sectores')}}>Sectores Boton</Button>
         </div>
       </div>
 	  <div className={styles.panel3}>
-	  	<Button onClick={() => setSelectedComponent(null)}>X</Button>
+	  	<Button className={styles.botonx}onClick={() => setSelectedComponent(null)}>X</Button>
 	  	{renderComponent()}
 	  </div>
     </div>
