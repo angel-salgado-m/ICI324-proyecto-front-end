@@ -41,8 +41,8 @@ export default function ForumPage() {
             <Button className={styles.boxout}>back</Button>
           	</NextLink>
 			{forum === "Lectura" && <Lectura direcciones={datos}/>}
-			{forum === "Novedad" && <Novedad />}
-			{forum === "Revision" && <Revision />}
+			{forum === "Novedad" && <Novedad direcciones={datos}/>}
+			{forum === "Revision" && <Revision direcciones={datos}/>}
 		</div>
 	);
 }

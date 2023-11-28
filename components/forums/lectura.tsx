@@ -41,7 +41,7 @@ export default function Lectura({ direcciones }) {
     formData.append('fecha', new Date().toISOString());
     formData.append('image', imagen);
     try {
-      const response = await fetch(`${backendUrl}/registro/crearRegistro/${bdtype}`,{
+      const response = await fetch(`${backendUrl}/registro/addReg/${bdtype}`,{
         method: 'POST',
         body: formData,
       });
