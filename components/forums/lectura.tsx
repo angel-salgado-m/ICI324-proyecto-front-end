@@ -9,7 +9,6 @@ export default function Lectura({ direcciones }) {
   const [imagen, setImagen] = useState(null);
   const [imagenPreview, setImagenPreview] = useState(null);
   const [selectedDirection, setSelectedDirection] = useState(null);
-
   const handleDescripcionChange = (e) => {
     setDescripcion(e.target.value);
   };
@@ -35,8 +34,9 @@ export default function Lectura({ direcciones }) {
       return;
     }
     const formData = new FormData();
-    formData.append('idDireccion', selectedDirection.id);
+    formData.append('idDireccion', selectedDirection.target.value);
     formData.append('tipo', 'Lectura');
+    formData.append('estado', 'uncheck');
     formData.append('descripcion', descripcion);
     formData.append('fecha', new Date().toISOString());
     formData.append('image', imagen);
