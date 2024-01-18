@@ -1,4 +1,4 @@
-export default function LectorLayout({
+export default function InspectorLayout({
 	children,
 }: {
 	children: React.ReactNode;

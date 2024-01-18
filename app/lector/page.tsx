@@ -5,7 +5,8 @@ import { Button } from '@nextui-org/react';
 import styles from '../../styles/styleop.module.css';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getdxs } from '../../api/direccionApi';
-
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('../../components/mapa'), { ssr: false });
 export default function InspectorPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -32,6 +33,7 @@ export default function InspectorPage() {
 
   return (
     <div className={styles.base}>
+      <Map />
       <div className={styles.boxout}>
         <div className={styles.boxout}>Sector Asignado: {sector}</div>
         <div className={styles.boxout}>Direcciones totales: {dxs}</div>
